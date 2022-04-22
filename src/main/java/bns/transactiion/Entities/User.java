@@ -1,9 +1,6 @@
 package bns.transactiion.Entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
@@ -13,10 +10,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name = "users", uniqueConstraints = {
         @UniqueConstraint(columnNames = {
@@ -26,17 +21,21 @@ import javax.validation.constraints.Size;
                 "email"
         })
 })
-public class User {
+public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
-    @Size(min = 3, max = 50)
-    private String name;
+    @Size(min=3, max = 50)
+    private String firstname;
 
     @NotBlank
-    @Size(min = 3, max = 50)
+    @Size(min=3, max = 50)
+    private String lastname;
+
+    @NotBlank
+    @Size(min=3, max = 50)
     private String username;
 
     @NaturalId
@@ -46,7 +45,7 @@ public class User {
     private String email;
 
     @NotBlank
-    @Size(min = 6, max = 100)
+    @Size(min=6, max = 100)
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -54,5 +53,16 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+
+    public User(String firstname, String lastname,
+                String username, String email, String password) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
 
 }

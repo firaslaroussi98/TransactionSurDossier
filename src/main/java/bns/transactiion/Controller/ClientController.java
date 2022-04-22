@@ -17,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Slf4j
 @RestController
+@RequestMapping("/client")
 public class ClientController {
     @Autowired
     IClientService clientService;
@@ -30,6 +31,7 @@ public class ClientController {
     @GetMapping("/retrieve-all-clients")
     public List<ClientDto> getAllClients()
     {
+
         return clientService.retrieveAllClients();
     }
 

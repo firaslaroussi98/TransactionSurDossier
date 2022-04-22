@@ -18,6 +18,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
+@RequestMapping("/emetteur")
 public class EmetteurController {
 
     @Autowired
@@ -32,6 +33,7 @@ public class EmetteurController {
     @GetMapping("/retrieve-all-emetteurs")
     public List<EmetteurDto> getAllEmetteurs()
     {
+
         return emetteurservice.retrieveAllEmetteurs();
     }
 

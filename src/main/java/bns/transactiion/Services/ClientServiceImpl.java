@@ -33,7 +33,7 @@ public class ClientServiceImpl implements IClientService{
                 .filter(c -> c.getId() > 3)
                 .limit(5)
                 .map(clientmapper::toDto)
-                .sorted(Comparator.comparing(ClientDto::getNomDto))
+              //  .sorted(Comparator.comparing(ClientDto::getNomDto))
 
                 .collect(toList());
     }

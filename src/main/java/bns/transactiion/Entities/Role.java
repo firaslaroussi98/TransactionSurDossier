@@ -1,17 +1,13 @@
 package bns.transactiion.Entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name = "roles")
 public class Role {
